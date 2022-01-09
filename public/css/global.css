@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+html {
+  --black: hsl(0, 0%, 0%);
+  --white: hsl(0, 0%, 98%);
+  --red: hsl(350, 79%, 58%);
+  --light-blue: hsl(231, 100%, 81%);
+  --blue: hsl(209, 100%, 50%);
+  --background: hsl(0, 0%, 11%);
+  --overlay: hsl(0, 0%, 13%);
+  --icons-details: hsl(216, 18%, 70%);
+
+  --grey-dark: hsl(229, 21%, 38%);
+  --grey-blue: hsl(229, 27%, 71%);
+  --grey-light: hsl(230, 30%, 92%);
+
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  background: var(--background);
+}
+
+/* ===== login ====== */
+.login02 {
+  margin-right: 5rem;
+}
+
+body,
+button,
+input,
+textarea {
+  /* intervalo de tamanho */
+  font-size: clamp(14px, 1.6rem, 2vw);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.content {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.sr-only {
+  display: flex;
+  height: 1px;
+  width: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============= Logo =========== */
+.logo {
+  font-family: 'Poppins';
+
+  font-size: 3rem;
+
+  color: var(--blue);
+}
+
+/* ============= INPUT AND BUTONS ======= */
+
+input,
+button,
+.button {
+  border-radius: 0.8rem;
+  height: 5rem;
+  width: 14rem;
+}
+
+button,
+.button {
+  font-family: 'Poppins';
+  font-weight: 500;
+  line-height: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--blue);
+  color: var(--white);
+
+  transition: filter 0.2s;
+
+  cursor: pointer;
+}
+
+button:hover,
+.button:hover {
+  filter: brightness(1.2);
+}
+
+button > img,
+.button > img {
+  margin-right: 1rem;
+  width: 2rem;
+}
+
+button.outlined,
+.button.outlined {
+  background: var(--background);
+  color: var(--blue);
+  border: 0.2rem solid var(--blue);
+}
+
+button.red,
+.button.red {
+  background: var(--red);
+  color: var(--white);
+}
+
+button.grey,
+.button.grey {
+  background: var(--grey-light);
+  color: var(--grey-dark);
+}
+/* ======= HEADER ====== */
+
+.content header {
+  width: 80%;
+  margin: 3.5rem auto;
+}
+
+.content header img {
+  width: 2rem;
+}
+
+@media (max-width: 440px) {
+  button {
+    display: inline-block;
+  }
+}

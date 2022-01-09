@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+    <head>
+  <title>Perguntas e respostas - Q</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="shortcut icon" href="/images/question.png" />
+
+  <link rel="stylesheet" href="/css/room.css" />
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/css/modal.css" />  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <script src="/js/main.js" defer type="module"></script>
+  
+    </head>
+
+    <body>
+      <div id="room" class="content">
+
+        <header>
+
+          <a href="/">
+            <div class="logo">    
+              <h1>Q</h1>
+            </div>      
+            </a>
+            <div class="buttons">
+              <div class="button outlined" id="room-id" data-id="<%= roomId %>">#<%= roomId %>           
+                <img src="/images/idroom.svg" alt="Copiar número da sala" class="iconb"/>
+              </div>
+              <a href="/create-room" class="button">
+                <img src="/images/users_2.svg" alt="Criar sala" class="iconb"/>
+                Criar sala
+              </a>
+            </div>       
+            
+          </header>
+
+          <main>
+
+            <section id="question-form">
+              <h2>Digite sua mensagem</h2>
+              <form action="/question/create/<%= roomId %>" method="POST">
+               <label class="sr-only" for="question">Digite sua mensagem</label>
+               <textarea name="question" id="question" placeholder="Digite sua mensagem"></textarea>
+
+               <footer>
+                 <div>
+                   <img src="/images/lock_black_24dp 1.svg" alt="Cadeado">
+                   Esta mensagem é anônima
+                 </div>
+                 <button class="sendbttn">Enviar</button>
+               </footer>
+              </form>
+            </section>
+
+            <section id="questions">
+              <h2 class="sr-only"></h2>
+
+              <div class="questions">
+
+              <% if (noQuestions){ %>
+                <%- include('parts/no-question') %>
+              <% } %>
+
+
+
+                <% questions.forEach(question => { %>
+                  <div class="question-wrapper">
+                    <div class="question-content">
+                      <div class="user">
+                        <img src="/images/user.svg" alt="">
+                      </div>
+                      <div class="question">
+                            <p><%=question.title %></p>
+                          </div>
+                    </div>
+  
+                    <div class="actions">                    
+                      <a href="#" class="check" data-id="<%= question.id %>">
+                        <img src="/images/check01.svg" alt="Marcar como lida"> 
+                        Marcar como lida
+                      </a>
+                      <a href="#" class="delete" data-id="<%= question.id %>">
+                        <img src="/images/trash01.svg" alt="Excluir">
+                        Excluir
+                      </a>
+                    </div>               
+                  </div>            
+                <% }); %>
+
+                <% questionsRead.forEach(questionRead => { %>
+                  <div class="question-wrapper read">
+                    <div class="question-content">
+                      <div class="user">
+                        <img src="/images/user.svg" alt="Imagem de usuário anônimo">
+                      </div>
+                      <div class="question">
+                        <p><%=questionRead.title %></p>
+                      </div>                         
+                    </div>
+  
+                    <div class="actions">                  
+                      <a href="#" class="delete" data-id="<%= questionRead.id %>">
+                        <img src="/images/trash01.svg" alt="Excluir">
+                        Excluir
+                      </a>
+                    </div>               
+                  </div>
+
+               <% }); %>
+               
+              </div>        
+            
+            </section>      
+
+          </main> 
+
+          </div>     
+          
+          <!--------MODAL------->      
+        
+          <div class="modal-wrapper">
+            <div class="modal">              
+              <h2></h2>
+              <p></p>
+
+              <form action="#" method="POST">
+                <label class="sr-only" for-id="password">Digite a senha da sala</label>
+                <input type="password" id="password" name="password" placeholder="Digite a senha da sala">
+
+                <div class="buttons">                
+                  <div class="button grey cancel">Cancelar</div>
+                  <button class="red"></button>
+                </div>
+              </form>
+
+            </div>
+          </div> 
+
+
+         
+         
+    </body>    
+</html>
